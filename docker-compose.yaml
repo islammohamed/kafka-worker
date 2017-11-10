@@ -1,0 +1,18 @@
+version: "2"
+services:
+    kafka:
+        build:
+          context: .
+          dockerfile: Dockerfile.kafka
+        ports:
+            - "9092:9092"
+            - "2181:2181"
+        #volumes:
+        #    - .:/var/www/html/
+        #environment:
+        #    - APPLICATION_ENV=development
+        #    - PHP_IDE_CONFIG=serverName=om.lvh.me
+        #    - XDEBUG_CONFIG=remote_host=$HOST_IP idekey=OFFERMANAGER
+        #networks:
+        #    - "default"
+        #    - "campaignmanager"

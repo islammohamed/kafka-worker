@@ -1,0 +1,13 @@
+FROM openjdk:latest
+
+RUN apt-get update && apt-get -yqq install curl
+RUN mkdir /kafka
+WORKDIR /kafka
+RUN curl -O http://mirror.23media.de/apache/kafka/1.0.0/kafka_2.11-1.0.0.tgz \
+    && tar -xzf kafka_2.11-1.0.0.tgz
+WORKDIR /kafka/kafka_2.11-1.0.0
+COPY ./docker-entrypoint.sh /kafka/
+
+ENTRYPOINT ["/bin/bash", "-c"]
+CMD ["/kafka/docker-entrypoint.sh"]
+#CMD ["sleep infinity"]
